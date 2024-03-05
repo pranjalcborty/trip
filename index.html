@@ -42,12 +42,14 @@
     <div class="box"></div>
 
     <script>
-        // Set your target date and time
-        const targetDate = new Date("2024-06-13T19:59:59");
+        const tripDetails = {
+            tripDate: new Date("2024-06-13T15:59:59"),
+            tripTitle: "Alberta calling..."
+        };
 
         function updateCountdown() {
             const currentDate = new Date();
-            const timeDifference = targetDate - currentDate;
+            const timeDifference = tripDetails.tripDate - currentDate;
 
             // Calculate days, hours, minutes, and seconds
             const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
@@ -62,8 +64,19 @@
             setTimeout(updateCountdown, 1000);
         }
 
+        const mainTitle = "When's the next trip?";
+        let toggle = false;
+
+        function updateTitle() {
+            document.title = toggle ? mainTitle : tripDetails.tripTitle;
+            toggle = !toggle;
+
+            setTimeout(updateTitle, 2000);
+        }
+
         // Initial call to start the countdown
         updateCountdown();
+        updateTitle();
     </script>
 </body>
 
