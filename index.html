@@ -1,50 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trip to Alberta</title>
-  <style>
-    body {
-      font-family: 'Trebuchet MS', sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    #countdown {
-      font-size: 6em;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip to Alberta</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        #countdown {
+            font-size: 10vh;
+            font-weight: bold;
+        }
+
+        .box {
+            --size: 50px;
+            --p: 25px;
+            --R: 55.9px
+                /*sqrt(var(--size)*var(--size) + var(--p)*var(--p))*/
+            ;
+
+            min-height: 70vh;
+
+            -webkit-mask:
+                radial-gradient(var(--R) at left 50% var(--d, top) calc(var(--size) + var(--p)), #000 99%, #0000 101%) calc(50% - 2*var(--size)) 0/calc(4*var(--size)) 100%,
+                radial-gradient(var(--R) at left 50% var(--d, top) calc(-1*var(--p)), #0000 99%, #000 101%) left 50% var(--d, top) var(--size)/calc(4*var(--size)) 100% repeat-x;
+            background: url("https://cdn.pixabay.com/photo/2017/05/09/03/46/alberta-2297204_1280.jpg");
+            border: none;
+        }
+
+        .box+.box {
+            --d: bottom;
+        }
+    </style>
 </head>
+
 <body>
+    <h1 style="font-size: 5vh; padding-top: 5vh;">Alberta loading in...</h1>
+    <div id="countdown" style="padding-bottom: 5vh;"></div>
 
-<h1>Alberta loading in...</h1>
-<div id="countdown"></div>
+    <div class="box"></div>
 
-<script>
-  // Set your target date and time
-  const targetDate = new Date("2024-06-13T15:59:59");
+    <script>
+        // Set your target date and time
+        const targetDate = new Date("2024-06-13T15:59:59");
 
-  function updateCountdown() {
-    const currentDate = new Date();
-    const timeDifference = targetDate - currentDate;
+        function updateCountdown() {
+            const currentDate = new Date();
+            const timeDifference = targetDate - currentDate;
 
-    // Calculate days, hours, minutes, and seconds
-    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-    // Display the countdown
-    document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            // Display the countdown
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-    // Update every second
-    setTimeout(updateCountdown, 1000);
-  }
+            // Update every second
+            setTimeout(updateCountdown, 1000);
+        }
 
-  // Initial call to start the countdown
-  updateCountdown();
-</script>
-
+        // Initial call to start the countdown
+        updateCountdown();
+    </script>
 </body>
+
 </html>
