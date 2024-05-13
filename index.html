@@ -78,7 +78,7 @@
             document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
             // Update every second
-            if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+            if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
                 document.getElementById("countdown").classList.add("toggle-pulsate");
                 document.getElementById("titleHeader").innerHTML = "Let's go...";
                 document.getElementById("countdown").innerHTML = "Alberta, here we come!"
