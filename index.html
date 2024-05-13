@@ -49,7 +49,7 @@
 </head>
 
 <body>
-    <h1 style="font-size: 5vh; padding-top: 5vh;">Alberta loading in...</h1>
+    <h1 id="titleHeader" style="font-size: 5vh; padding-top: 5vh;">Alberta loading in...</h1>
     <div id="countdown"></div>
 
     <div class="box"></div>
@@ -70,7 +70,7 @@
             const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-            if (days === 31 && hours === 0 && minutes === 35) {
+            if (days === 0 && hours === 0 && minutes < 30) {
                 document.getElementById("countdown").classList.add("toggle-pulsate");
             }
 
@@ -78,8 +78,9 @@
             document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
             // Update every second
-            if (days === 31 && hours === 0 && minutes === 35 && seconds === 0) {
-                document.getElementById("countdown").classList.remove("toggle-pulsate");
+            if (days === 0 && hours === 0 && minutes === 30 && seconds === 0) {
+                document.getElementById("titleHeader").innerHTML = "";
+                document.getElementById("countdown").innerHTML = "Alberta, here we come!"
             } else {
                 setTimeout(updateCountdown, 1000);
             }
