@@ -70,7 +70,7 @@
             const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-            if (days === 0 && hours === 0 && minutes === 0) {
+            if (days === 31 && hours === 0 && minutes === 30) {
                 document.getElementById("countdown").classList.add("toggle-pulsate");
             }
 
@@ -78,7 +78,7 @@
             document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
             // Update every second
-            if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+            if (days === 31 && hours === 0 && minutes === 30 && seconds === 0) {
                 document.getElementById("countdown").classList.remove("toggle-pulsate");
             } else {
                 setTimeout(updateCountdown, 1000);
