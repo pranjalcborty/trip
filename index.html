@@ -1,106 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trip to Alberta</title>
-    <style>
-        body {
-            font-family: 'Trebuchet MS', sans-serif;
-            text-align: center;
-            margin: 0;
-        }
-
-        #countdown {
-            font-size: 10vh;
-            font-weight: bold;
-            padding-bottom: 5vh;
-        }
-
-        .toggle-pulsate {
-            animation: pulsate 1s ease-out;
-            animation-iteration-count: infinite;
-            color: red;
-        }
-        
-        @keyframes pulsate {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .box {
-            --size: 70px;
-            --R: calc(var(--size) * 1.28);
-            mask:
-                radial-gradient(var(--R) at 50% calc(1.8 * var(--size)), #000 99%, #0000 101%) calc(50% - 2*var(--size)) 0/calc(4 * var(--size)) 100%,
-                radial-gradient(var(--R) at 50% calc(-.8 * var(--size)), #0000 99%, #000 101%) 50% var(--size) / calc(4 * var(--size)) 100% repeat-x;
-            min-height: 66vh;
-            background: url("./img.jpg");
-            background-size: cover;
-            border: none;
-        }
-
-        .box+.box {
-            --d: bottom;
-        }
-    </style>
+    <title>Happy Valentine's Day, Smriti!</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <h1 id="titleHeader" style="font-size: 5vh; padding-top: 5vh;">Alberta loading in...</h1>
-    <div id="countdown"></div>
+    <div id="fireworks"></div>
+    <div class="content">
+        <h1>Hi Smriti, happy Valentine's Day!</h1>
+        <p>Sending love and joy your way! মাদক সেবন পরিত্যাগ কর!</p>
+    </div>
 
-    <div class="box"></div>
-
-    <script>
-        const tripDetails = {
-            tripDate: new Date("2024-06-13T20:00:00"),
-            tripTitle: "Alberta calling..."
-        };
-
-        function updateCountdown() {
-            const currentDate = new Date();
-            const timeDifference = tripDetails.tripDate - currentDate;
-
-            // Calculate days, hours, minutes, and seconds
-            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-            if (days === 0 && hours === 0 && minutes < 5) {
-                document.getElementById("countdown").classList.add("toggle-pulsate");
-            }
-
-            // Display the countdown
-            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-            // Update every second
-            if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
-                document.getElementById("countdown").classList.add("toggle-pulsate");
-                document.getElementById("titleHeader").innerHTML = "Let's go...";
-                document.getElementById("countdown").innerHTML = "Alberta, here we come!"
-            } else {
-                setTimeout(updateCountdown, 1000);
-            }
-        }
-
-        const mainTitle = "When's the next trip?";
-        let toggle = false;
-
-        function updateTitle() {
-            document.title = toggle ? mainTitle : tripDetails.tripTitle;
-            toggle = !toggle;
-
-            setTimeout(updateTitle, 2000);
-        }
-
-        // Initial call to start the countdown
-        updateCountdown();
-        updateTitle();
-    </script>
+    <script src="scripts.js"></script>
 </body>
-
 </html>
